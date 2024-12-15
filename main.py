@@ -1,9 +1,13 @@
 import img2pdf
+import os
+folderPath = input("Enter the path of the file and name it as 'input.png'")
+filePath = os.path.join(folderPath, "input.png")
 
-with open("TVH.png", "rb") as image:
+with open(filePath, "rb") as image:
     pdf_bytes = img2pdf.convert(image.read())
 
-with open("TVM.pdf", "wb") as pdf:
+newFilePath = os.path.join(folderPath, "output.pdf")
+with open(newFilePath, "wb") as pdf:
     pdf.write(pdf_bytes)
 
-print("Image has been converted to pdf succesfully.")
+print(f"Image has been converted to pdf succesfully. Check here: {newFilePath}")
